@@ -1,0 +1,41 @@
+Repository: mrhappy98437/AdventuresofNickyJ
+GitHub URL: https://github.com/mrhappy98437/AdventuresofNickyJ
+Primary branch: main
+
+Purpose:
+This repository contains the deployed static website for "Adventures of Nicky J".
+It is a plain HTML/CSS/JavaScript site with no framework, no build step, and no backend.
+
+Main site files:
+- index.html
+- mobile.html
+- css/
+- js/
+- data/
+- images/
+
+Important notes for another AI:
+- This repo was prepared from a local website folder and pushed as a clean deployment copy.
+- Some local-only folders were intentionally not uploaded.
+- Do not assume every folder from the source design workspace belongs in GitHub.
+
+Excluded from GitHub on purpose:
+- _archive/
+- design-source/
+- Original Index/
+- .DS_Store files
+- empty placeholder folders such as fonts/ and sounds/
+- unused mobile cover leftovers:
+  - images/galleries/mobile-covers/cover-01.png
+  - images/galleries/mobile-covers/cover-02.png
+  - images/galleries/mobile-covers/cover-03.png
+
+Repo workflow notes:
+- The current branch is main.
+- The repo contents were intentionally replaced with the prepared website upload.
+- If updating the live site again, start from the actual website source, then re-check what should and should not be committed.
+
+Asset/layout context:
+- The site depends on image-based UI assets and custom visual layouts.
+- Do not casually replace designed image assets with generic CSS boxes or placeholder UI.
+- README.md contains more detailed project and asset structure guidance.
