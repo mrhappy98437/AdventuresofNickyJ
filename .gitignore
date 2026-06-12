@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+
+# Not served by the site; keep local only
+_archive/
+design-source/
+Original Index/
+
+# Empty placeholder folders
+fonts/
+sounds/
+
+# Legacy leftovers not used by current mobile gallery config
+images/galleries/mobile-covers/cover-01.png
+images/galleries/mobile-covers/cover-02.png
+images/galleries/mobile-covers/cover-03.png

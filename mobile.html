@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>The Adventures of Nicky J</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+
+<div id="mobile-app">
+
+  <!-- ══ BACKGROUND CYCLING ══ -->
+  <div class="m-bg-container" id="m-bg-container">
+    <!-- Slides injected by mobile.js -->
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SCREEN: HOME
+  ══════════════════════════════════════════ -->
+  <section class="m-screen" id="m-home">
+
+    <!-- Hero: top hero art is handled in CSS so the section uses the final asset directly -->
+    <div class="m-hero">
+      <div class="m-hero-content">
+        <p class="m-welcome">Welcome</p>
+        <h1 class="m-hero-title">TO THE<br>STUDIO</h1>
+        <p class="m-hero-desc">
+          Creative photography<br>
+          &amp; design inspired by<br>
+          Miami. Est. 2016
+        </p>
+        <button class="m-cta-btn" id="m-cta-btn">VIEW GALLERIES &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Home content: sections live inside hand-drawn Item-window shells -->
+    <div class="m-home-content">
+
+      <!-- Quick links — illustrated window shell (Item-window art) -->
+      <div class="m-window m-window-quick">
+      <div class="m-quick-grid">
+        <button class="m-qi-btn" data-action="about">
+          <img src="images/ui/mobile/quick-links/about.png" alt="About Me">
+          <span>About Me</span>
+        </button>
+        <button class="m-qi-btn" data-action="galleries">
+          <img src="images/ui/mobile/quick-links/galleries.png" alt="Galleries">
+          <span>Galleries</span>
+        </button>
+        <button class="m-qi-btn" data-action="services">
+          <img src="images/ui/mobile/quick-links/services.png" alt="Services">
+          <span>Services</span>
+        </button>
+        <button class="m-qi-btn" data-action="contact">
+          <img src="images/ui/mobile/quick-links/contact.png" alt="Contact">
+          <span>Contact</span>
+        </button>
+      </div>
+      </div>
+
+      <!-- Explore by category — illustrated window shell (Item-window-2 art) -->
+      <div class="m-window m-window-cat">
+        <div class="m-section-header">
+          <h3>Explore by Category</h3>
+          <button class="m-view-all-btn" id="m-view-all">View All &rarr;</button>
+        </div>
+        <div class="m-cat-grid" id="m-cat-grid">
+          <!-- Populated by mobile.js -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SCREEN: GALLERIES OVERVIEW
+  ══════════════════════════════════════════ -->
+  <section class="m-screen" id="m-galleries">
+
+    <div class="m-screen-header">
+      <button class="m-back-btn" id="m-galleries-back">&lsaquo;</button>
+      <span class="m-screen-title">Galleries</span>
+      <span class="m-header-spacer"></span>
+    </div>
+
+    <div class="m-galleries-scroll" id="m-galleries-list">
+      <!-- Gallery cards injected by mobile.js -->
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SCREEN: GALLERY (individual, full-bleed)
+  ══════════════════════════════════════════ -->
+  <section class="m-screen" id="m-gallery">
+
+    <div class="m-screen-header">
+      <button class="m-back-btn" id="m-gallery-back">&lsaquo;</button>
+      <span class="m-screen-title" id="m-gallery-title">Gallery</span>
+      <span class="m-header-spacer"></span>
+    </div>
+
+    <div class="m-gallery-scroll" id="m-gallery-scroll">
+      <!-- Images injected by mobile.js -->
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       ABOUT ME SHEET (slides up)
+  ══════════════════════════════════════════ -->
+  <div class="m-sheet-backdrop" id="m-sheet-backdrop"></div>
+
+  <div class="m-about-sheet" id="m-about-sheet">
+    <div class="m-about-handle"></div>
+    <button class="m-about-close" id="m-about-close">&times;</button>
+    <div class="m-about-body">
+      <p class="m-about-aname">Nicky J</p>
+      <p class="m-about-tagline">Photographer &nbsp;&middot;&nbsp; Storyteller &nbsp;&middot;&nbsp; Wanderer</p>
+      <p class="m-about-para">
+        I'm drawn to the in-between &mdash; liminal spaces where city neon bleeds
+        into overcast sky, where sunlight pushes through a canopy of trees on
+        the edge of somewhere you can't quite name.
+      </p>
+      <p class="m-about-para">
+        My work lives where nature meets nightlife. The sea under grey clouds.
+        A palm silhouetted against a skyline flickering to life. Dark, dramatic
+        light that turns an ordinary street into something cinematic.
+      </p>
+      <p class="m-about-para">
+        Photography, film, graphic design, websites &mdash; whatever the medium,
+        I'm chasing the same thing: that strange, beautiful quality of light
+        that makes you stop and feel it.
+      </p>
+      <p class="m-about-sign">Available for work &nbsp;&middot;&nbsp; Based everywhere</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       BOTTOM NAV
+  ══════════════════════════════════════════ -->
+  <nav class="m-bottom-nav">
+    <div class="m-nav-bg">
+      <img src="images/ui/mobile/dock/dock-bar-trim.png" alt="">
+    </div>
+    <div class="m-nav-buttons">
+
+      <button class="m-nav-item active" data-screen="home">
+        <img src="images/ui/mobile/dock/home-clean.png" alt="">
+        <span>Home</span>
+      </button>
+
+      <button class="m-nav-item" data-screen="galleries">
+        <img src="images/ui/mobile/dock/camera-clean.png" alt="">
+        <span>Galleries</span>
+      </button>
+
+      <button class="m-nav-item m-nav-center stub" data-screen="studio">
+        <img src="images/ui/mobile/dock/palmtree-clean.png" alt="">
+        <span>Studio</span>
+      </button>
+
+      <button class="m-nav-item stub" data-screen="pricing">
+        <img src="images/ui/mobile/dock/price-tag-clean.png" alt="">
+        <span>Pricing</span>
+      </button>
+
+      <button class="m-nav-item stub" data-screen="menu">
+        <img src="images/ui/mobile/dock/menu-clean.png" alt="">
+        <span>Menu</span>
+      </button>
+
+    </div>
+  </nav>
+
+</div><!-- /mobile-app -->
+
+<script src="js/mobile.js"></script>
+</body>
+</html>

@@ -1,0 +1,757 @@
+/* ═══════════════════════════════════════════════
+   The Adventures of Nicky J — Mobile Stylesheet
+   Screens: Home · Galleries · Gallery
+   ═══════════════════════════════════════════════ */
+
+/* ── Variables ───────────────────────────────── */
+:root {
+  --pink:        #F5B0BC;
+  --hot-pink:    #b83060;
+  --soft-pink:   #ef9ec0;
+  --lavender:    #b684cc;
+  --dark:        #0e0610;
+  --mid-dark:    #160820;
+  --cream:       #f7e9d2;
+  --cream-bg:    #ecddc0;
+  --cream-card:  #f0e4c8;
+  --outer-bg1:   #e8a4bc;
+  --outer-bg2:   #d490b4;
+  --outer-bg3:   #c8a8d0;
+  --text-dark:   #1a0a10;
+  --text-mid:    #5a3040;
+  --text-muted:  #9a7080;
+  --teal-nav:    #6b8ea0;
+  --nav-h:       clamp(64px, calc(min(100vw, 480px) / 4.95), 97px);
+  --header-h:    52px;
+}
+
+/* ── Reset ───────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  height: 100%;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ── App shell ───────────────────────────────── */
+#mobile-app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: 'Space Mono', monospace;
+  /* Soft sunset-paper gradient — matches mockup (lavender → cream → pink) */
+  background:
+    radial-gradient(circle at top center, rgba(255, 236, 214, 0.5) 0%, rgba(255, 236, 214, 0) 30%),
+    linear-gradient(180deg, #c9aedb 0%, #e2b8d3 16%, #f2d3cb 40%, #f5cfc3 58%, #f0bac6 80%, #e8a8c0 100%);
+}
+
+@supports (height: 100dvh) {
+  html, body { height: 100dvh; }
+}
+
+/* Tablets / desktop preview: keep the phone-app framing */
+@media (min-width: 600px) {
+  body { background: #1d0d18; }
+  #mobile-app { max-width: 480px; }
+}
+
+/* Faint blueprint grid overlay — part of the mockup background language */
+#mobile-app::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* ══════════════════════════════════════════════
+   BACKGROUND CYCLING  (galleries / gallery only)
+══════════════════════════════════════════════ */
+.m-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;               /* hidden on home */
+  transition: opacity 0.6s;
+}
+.m-bg-container.visible { opacity: 1; }
+
+.m-bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+}
+.m-bg-slide.active { opacity: 1; }
+
+/* ══════════════════════════════════════════════
+   SCREENS
+══════════════════════════════════════════════ */
+.m-screen {
+  position: absolute;
+  inset: 0;
+  bottom: var(--nav-h);
+  z-index: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.m-screen.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@keyframes slideInR  { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
+@keyframes slideInL  { from { transform:translateX(-60%); opacity:0; } to { transform:translateX(0); opacity:1; } }
+@keyframes slideOutL { from { transform:translateX(0); opacity:1; } to { transform:translateX(-60%); opacity:0; } }
+@keyframes slideOutR { from { transform:translateX(0); opacity:1; } to { transform:translateX(100%); opacity:0; } }
+
+.m-screen.entering-fwd  { animation: slideInR  0.32s cubic-bezier(.22,.88,.26,1) forwards; }
+.m-screen.entering-back { animation: slideInL  0.28s cubic-bezier(.22,.88,.26,1) forwards; }
+.m-screen.leaving-fwd   { animation: slideOutL 0.28s cubic-bezier(.55,0,.78,.2)  forwards; pointer-events:none; }
+.m-screen.leaving-back  { animation: slideOutR 0.28s cubic-bezier(.55,0,.78,.2)  forwards; pointer-events:none; }
+
+/* Shared screen header */
+.m-screen-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background: var(--pink);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.16);
+}
+.m-screen-title {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  text-align: center;
+}
+.m-back-btn {
+  font-size: 26px;
+  color: var(--text-dark);
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.15s;
+  line-height: 1;
+}
+.m-back-btn:active { transform: scale(0.82); }
+.m-header-spacer   { width: 36px; }
+
+/* ══════════════════════════════════════════════
+   HOME SCREEN
+══════════════════════════════════════════════ */
+#m-home {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 12px 18px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent; /* shows pink app bg */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Hero card ──────────────────────────────── */
+.m-hero {
+  position: relative;
+  /* Finished hand-drawn hero window: frame, cream text panel, sunset
+     and carousel dots are all baked into this asset. Use it directly. */
+  background: url('../images/ui/mobile/hero/hero-window-trim.png') center/100% 100% no-repeat;
+  /* native art is 1327×625; stretched taller to match mockup proportions
+     and fit the text + CTA inside the cream panel */
+  aspect-ratio: 1327 / 800;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  filter: drop-shadow(0 10px 22px rgba(43,19,32,0.28));
+  flex-shrink: 0;
+}
+
+/* chrome overlay removed — no .m-hero-chrome needed */
+.m-hero-chrome { display: none !important; }
+.m-hero-content {
+  position: absolute;
+  top: 11%;
+  left: 8%;
+  right: 46%;
+  z-index: 2;
+}
+.m-welcome {
+  font-family: 'Caveat', 'DM Sans', cursive;
+  font-weight: 600;
+  font-size: clamp(18px, 5.6vw, 26px);
+  line-height: 1;
+  color: var(--soft-pink);
+  margin-bottom: 2px;
+}
+.m-hero-title {
+  font-size: clamp(22px, 6.6vw, 30px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #151011;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+.m-hero-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(10px, 2.8vw, 12px);
+  font-weight: 400;
+  color: rgba(26,10,16,0.88);
+  line-height: 1.45;
+  margin-bottom: 14px;
+}
+.m-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--pink);
+  color: var(--text-dark);
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(8.5px, 2.4vw, 10.5px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 9px 15px;
+  border-radius: 3px;
+  transition: background 0.15s, transform 0.12s;
+}
+.m-cta-btn:active { background: var(--hot-pink); color: #fff; transform: scale(0.95); }
+
+/* ── Card base ──────────────────────────────── */
+.m-card {
+  background: var(--cream-card);
+  border-radius: 14px;
+  padding: 16px 14px;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.12);
+}
+
+/* ── Quick icons card ───────────────────────── */
+.m-qi-card {
+  padding: 14px 0;
+}
+.m-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.m-qi-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 6px 10px;
+  background: transparent;
+  border-right: 1px solid rgba(100,50,60,0.12);
+  transition: transform 0.14s, background 0.12s;
+  position: relative;
+}
+.m-qi-btn:last-child { border-right: none; }
+.m-qi-btn:active { transform: scale(0.9); background: rgba(0,0,0,0.04); }
+
+.m-qi-btn img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+}
+.m-qi-btn span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-align: center;
+}
+/* Pink underline accent */
+.m-qi-btn span::after {
+  content: '';
+  display: block;
+  width: 16px; height: 2px;
+  background: var(--hot-pink);
+  margin: 4px auto 0;
+  border-radius: 1px;
+}
+
+/* ── Category card ──────────────────────────── */
+.m-cat-card {
+  padding: 14px 12px 16px;
+}
+
+/* Section header */
+.m-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px solid rgba(184,48,96,0.25);
+}
+.m-section-header h3 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+.m-view-all-btn {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--hot-pink);
+  transition: opacity 0.15s;
+}
+.m-view-all-btn:active { opacity: 0.6; }
+
+/* Category grid — 4 columns */
+.m-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px 10px;
+  margin-top: 10px;
+}
+.m-cat-item {
+  display: block;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  transition: transform 0.14s;
+  cursor: pointer;
+  grid-column: span 3;
+}
+.m-cat-item:active { transform: scale(0.96); }
+.m-cat-item.is-static { cursor: default; }
+.m-cat-item.is-static:active { transform: none; }
+.m-cat-item img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  padding: 0;
+  display: block;
+}
+.m-cat-item:nth-child(5) { grid-column: 1 / span 4; }
+.m-cat-item:nth-child(6) { grid-column: 5 / span 4; }
+.m-cat-item:nth-child(7) { grid-column: 9 / span 4; }
+
+/* ── Home content layout ─────────────────────── */
+.m-home-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 0;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Illustrated window shells ────────────────────────
+   The cream sections are NOT plain CSS panels — they use the
+   hand-drawn Item-window art via border-image so the imperfect
+   illustrated border/chrome is preserved at any height. */
+.m-window {
+  border-style: solid;
+  border-width: 16px;
+  border-image: url('../images/ui/mobile/categories/section-window-trim.png') 64 fill / 16px stretch;
+  filter: drop-shadow(0 10px 22px rgba(43,19,32,0.18));
+}
+
+.m-window-quick {
+  padding: 0 2px;
+}
+
+.m-window-cat {
+  border-image-source: url('../images/ui/mobile/categories/section-window-2-trim.png');
+  border-image-slice: 60 fill;
+  padding: 2px 2px 6px;
+}
+
+.m-window-cat .m-section-header {
+  padding: 2px 2px 9px;
+}
+
+.m-window-cat .m-cat-grid {
+  margin-top: 12px;
+  align-content: start;
+}
+
+/* ══════════════════════════════════════════════
+   GALLERIES OVERVIEW — phone card style
+══════════════════════════════════════════════ */
+/* Scrim lives on the FIXED background layer, not inside the scroller —
+   an overlay inside the scrolling screen only covers the first viewport
+   and scrolls away (the old "half transparent rectangle" bug). */
+.m-bg-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15,5,18,0.3) 0%, rgba(15,5,18,0.45) 45%, rgba(15,5,18,0.6) 100%),
+    linear-gradient(120deg, rgba(245,176,188,0.12), rgba(104,54,122,0.1));
+  pointer-events: none;
+}
+.m-galleries-scroll {
+  position: relative;
+  z-index: 1;
+  padding: 18px 16px 32px;
+  min-height: 100%;
+}
+
+.m-gallery-card {
+  position: relative;
+  display: block;
+  width: min(100%, 360px);
+  margin: 0 auto 20px;
+  transform: rotate(var(--card-rotate, 0deg));
+  transition: transform 0.18s cubic-bezier(.2,.8,.4,1), filter 0.18s;
+}
+.m-gallery-card:active {
+  transform: rotate(0deg) scale(0.97);
+}
+
+.m-gallery-card-visual {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 894 / 804;
+  filter: drop-shadow(0 24px 28px rgba(0,0,0,0.35));
+}
+
+.m-gallery-card-visual.has-art {
+  aspect-ratio: auto;
+}
+
+.m-gallery-card-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.m-gallery-card-photo {
+  position: absolute;
+  left: 5.2%;
+  top: 4.2%;
+  width: 89.6%;
+  height: 74.2%;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--mid-dark);
+}
+
+.m-gallery-card-photo.loading {
+  background: linear-gradient(90deg, #1e0c28 25%, #2e1040 50%, #1e0c28 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+.m-gallery-card-frame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.m-gallery-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 0 6px;
+}
+
+.m-gallery-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #fff5e5;
+  text-transform: uppercase;
+}
+
+.m-gallery-card-count {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255,232,214,0.78);
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ══════════════════════════════════════════════
+   GALLERY — full bleed scroll (Style B)
+══════════════════════════════════════════════ */
+#m-gallery {
+  inset: 8px 8px var(--nav-h) 8px;
+  background: #35363b;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 22px 44px rgba(0,0,0,0.42);
+}
+
+#m-gallery .m-screen-header {
+  border-radius: 18px 18px 0 0;
+}
+
+.m-gallery-scroll {
+  background: #060606;
+  padding-bottom: 20px;
+}
+
+.m-gallery-img-wrap {
+  width: 100%;
+  position: relative;
+  background: #0a0a0a;
+  margin-bottom: 3px;
+}
+.m-gallery-img {
+  width: 100%;
+  display: block;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.m-gallery-img.visible { opacity: 1; transform: translateY(0); }
+
+.m-gallery-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.m-gallery-img-num {
+  position: absolute;
+  bottom: 8px; right: 10px;
+  font-size: 8px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════
+   ABOUT SHEET
+══════════════════════════════════════════════ */
+.m-about-sheet {
+  position: absolute;
+  bottom: var(--nav-h); left: 0; right: 0;
+  z-index: 50;
+  background: #080808;
+  border-radius: 20px 20px 0 0;
+  /* Push far enough below to clear the nav height too */
+  transform: translateY(calc(100% + 80px));
+  transition: transform 0.38s cubic-bezier(.22,.88,.26,1);
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.65);
+  max-height: 78vh;
+  overflow-y: auto;
+  padding-bottom: 32px;
+}
+.m-about-sheet.open { transform: translateY(0); }
+
+.m-about-handle {
+  width: 40px; height: 4px;
+  background: rgba(245,176,188,0.35);
+  border-radius: 2px;
+  margin: 14px auto 0;
+}
+.m-about-close {
+  position: absolute; top: 10px; right: 16px;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: opacity 0.15s;
+}
+.m-about-close:active { opacity: 0.5; }
+.m-about-body { padding: 18px 24px 0; }
+.m-about-aname {
+  font-size: 20px; font-weight: 700;
+  color: #fff; margin-bottom: 3px;
+}
+.m-about-tagline {
+  font-size: 8px;
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 20px;
+}
+.m-about-para {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 300;
+  line-height: 1.72;
+  color: #ccc; margin-bottom: 12px;
+}
+.m-about-sign {
+  font-size: 8px; color: #444;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.m-sheet-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 49;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.m-sheet-backdrop.visible { opacity: 1; pointer-events: auto; }
+
+/* ══════════════════════════════════════════════
+   BOTTOM NAV
+══════════════════════════════════════════════ */
+.m-bottom-nav {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+  z-index: 20;
+  padding: 0;
+}
+
+/* Dock bar art: flush full width, native 4.95:1 ratio — no warping, per mockup */
+.m-nav-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 0;
+}
+.m-nav-bg img {
+  width: 100%; height: 100%;
+  object-fit: fill;
+  object-position: center;
+}
+
+.m-nav-buttons {
+  position: absolute;
+  z-index: 1;
+  inset: 5px 10px calc(env(safe-area-inset-bottom, 0px) * 0.6 + 9px);
+  display: flex;
+  align-items: stretch;
+}
+
+.m-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: transform 0.15s;
+  position: relative;
+}
+/* thin hand-drawn-style dividers between dock items, per mockup */
+.m-nav-item:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 20%;
+  height: 58%;
+  width: 1.5px;
+  background: rgba(8, 24, 34, 0.3);
+  pointer-events: none;
+}
+.m-nav-item img {
+  width: 34px; height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.22));
+  transition: opacity 0.2s, transform 0.2s;
+}
+.m-nav-item span {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(12, 22, 30, 0.92);
+  transition: color 0.2s;
+}
+
+/* Active state */
+.m-nav-item.active img {
+  opacity: 1;
+  transform: translateY(-1px) scale(1.08);
+}
+.m-nav-item.active span { color: #111; }
+
+/* Active underline dot */
+.m-nav-item.active::before {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  width: 22px; height: 3px;
+  background: var(--hot-pink); border-radius: 999px;
+  animation: navDot 0.25s cubic-bezier(.2,.8,.4,1.4) forwards;
+}
+
+/* Stub items: full-strength art per mockup, label slightly dimmed */
+.m-nav-item.stub img  { opacity: 0.95; }
+.m-nav-item.stub span { color: rgba(12,22,30,0.6); }
+
+/* Centre STUDIO button — palmtree art already includes the pink circle.
+   It rides higher so the circle pokes above the bar, per mockup. */
+.m-nav-center {
+  position: relative;
+  justify-content: center;
+}
+.m-nav-center img {
+  width: 52px; height: 52px;
+  object-fit: contain;
+  opacity: 1 !important;
+  transform: translateY(-14px);
+  margin-bottom: -14px;
+  filter: drop-shadow(0 4px 10px rgba(120,30,60,0.35));
+}
+.m-nav-center:active img { transform: translateY(-14px) scale(0.92); }
+
+
+@keyframes navDot {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+@keyframes navBounce {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.82); }
+  70%  { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+.m-nav-item.tapped { animation: navBounce 0.3s ease forwards; }
+
+@media (max-width: 380px) {
+  .m-hero-content {
+    top: 12%;
+    left: 7%;
+    right: 45%;
+  }
+
+  .m-window { border-width: 14px; border-image-width: 14px; }
+
+  .m-gallery-card-title {
+    font-size: 15px;
+  }
+
+  .m-gallery-card-count {
+    font-size: 8.5px;
+  }
+}

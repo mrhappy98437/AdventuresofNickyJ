@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <script>
+    // Redirect mobile/tablet devices to the mobile layout
+    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+        && !window.location.search.includes('desktop')) {
+      window.location.replace('mobile.html');
+    }
+  </script>
+  <meta name="viewport" content="width=1600">
+  <title>The Adventures of Nicky J</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="viewport-rails" aria-hidden="true">
+  <span class="viewport-rail viewport-rail-left"></span>
+  <span class="viewport-rail viewport-rail-right"></span>
+</div>
+
+<div class="site-shell">
+  <section class="hero-section" id="home">
+    <div class="stage-shell">
+      <div class="stage" id="stage">
+
+        <!-- ══ MENU BAR ══ -->
+        <div class="menubar" id="menubar">
+
+          <div class="menubar-brand">
+            <span style="font-size:17px;">🌴</span>
+            <span>The Adventures of Nicky J</span>
+          </div>
+
+          <div class="nav-menus">
+
+            <!-- File -->
+            <div class="nav-menu" data-menu="file">
+              <div class="nav-menu-trigger">File</div>
+              <div class="nav-menu-dropdown">
+                <div class="dropdown-item" data-action="about" data-link-id="about">About</div>
+                <div class="dropdown-item" data-action="scroll-galleries" data-link-id="projects">Galleries</div>
+                <div class="dropdown-item inactive" data-link-id="shop">Shop</div>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="nav-menu" data-menu="content">
+              <div class="nav-menu-trigger">Content</div>
+              <div class="nav-menu-dropdown">
+                <div class="dropdown-item" data-action="open-gallery" data-gallery="street" data-link-id="street">Street</div>
+                <div class="dropdown-item" data-action="open-gallery" data-gallery="wedding" data-link-id="weddings">Weddings</div>
+                <div class="dropdown-item" data-action="open-gallery" data-gallery="portrait" data-link-id="portraits">Portraits</div>
+                <div class="dropdown-item" data-action="open-gallery" data-gallery="landscape" data-link-id="landscape">Landscape</div>
+                <div class="dropdown-item" data-action="open-gallery" data-gallery="liminal" data-link-id="liminal">Liminal Spaces</div>
+                <div class="dropdown-item inactive" data-link-id="videos">Videos</div>
+                <div class="dropdown-item inactive" data-link-id="graphic-design">Graphic Design</div>
+                <div class="dropdown-item inactive" data-link-id="websites">Websites</div>
+              </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="nav-menu" data-menu="contact">
+              <div class="nav-menu-trigger">Contact</div>
+              <div class="nav-menu-dropdown">
+                <div class="dropdown-item" data-action="instagram" data-link-id="instagram">Instagram</div>
+                <div class="dropdown-item" data-action="email" data-link-id="email">Email</div>
+                <div class="dropdown-item inactive" data-link-id="blog">Blog</div>
+              </div>
+            </div>
+
+          </div><!-- /nav-menus -->
+
+          <div class="menubar-right">
+            <a href="mailto:hello@adventuresofnickyj.com">hello@adventuresofnickyj.com</a>
+            <span style="font-size:14px; cursor:pointer;" title="Instagram">📷</span>
+            <span style="font-size:14px; cursor:pointer;" title="Email">✉</span>
+            <span class="menubar-time" id="clock">14:44</span>
+          </div>
+
+        </div><!-- /menubar -->
+
+
+        <!-- ══ DOCK ══ -->
+        <div class="dock-wrapper">
+
+          <div class="dock-icons" style="bottom: 60px;">
+            <div class="dock-icon" data-action="about" style="--icon-y: -38px;">
+              <img src="images/ui/desktop/dock/about.png" alt="About Me" style="width: 68px; height: 68px;">
+              <span class="icon-label">About Me</span>
+            </div>
+            <div class="dock-icon" data-action="portfolio" style="--icon-y: -38px;">
+              <img src="images/ui/desktop/dock/portfolio.png" alt="Portfolio" style="width: 68px; height: 68px;">
+              <span class="icon-label">Portfolio</span>
+            </div>
+            <div class="dock-icon" data-action="services" style="--icon-y: -38px;">
+              <img src="images/ui/desktop/dock/services.png" alt="Services" style="width: 68px; height: 68px;">
+              <span class="icon-label">Services</span>
+            </div>
+            <div class="dock-icon" data-action="prices" style="--icon-y: -38px;">
+              <img src="images/ui/desktop/dock/prices.png" alt="Prices" style="width: 68px; height: 68px;">
+              <span class="icon-label">Prices</span>
+            </div>
+            <div class="dock-icon" data-action="contact" style="--icon-y: -38px;">
+              <img src="images/ui/desktop/dock/contact.png" alt="Contact" style="width: 68px; height: 68px;">
+              <span class="icon-label">Contact</span>
+            </div>
+            <div class="dock-icon" data-action="instagram" style="--icon-y: -38px;">
+              <img src="images/ui/desktop/dock/instagram.png" alt="Instagram" style="width: 68px; height: 68px;">
+              <span class="icon-label">Instagram</span>
+            </div>
+          </div>
+
+          <img src="images/ui/desktop/dock-platform.png" alt="" class="dock-platform">
+
+        </div><!-- /dock -->
+
+        <button class="scroll-cue" id="scroll-cue" type="button" aria-label="Scroll to galleries">
+          <span class="scroll-cue-text">View Galleries</span>
+          <span class="scroll-cue-arrow">↓</span>
+        </button>
+
+      </div><!-- /stage -->
+    </div>
+  </section>
+
+  <section class="gallery-section" id="galleries">
+    <div class="gallery-section-panel">
+      <h2 class="gallery-section-title">Galleries</h2>
+
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Thumbnail art includes the window frame AND the title text.
+             Do not add title spans on top. -->
+        <button class="gallery-thumb" type="button" data-gallery="portrait">
+          <span class="gallery-thumb-window">
+            <img class="gallery-thumb-composite" src="images/thumbnails/portrait.png" alt="Portrait gallery preview">
+          </span>
+        </button>
+
+        <button class="gallery-thumb" type="button" data-gallery="street">
+          <span class="gallery-thumb-window">
+            <img class="gallery-thumb-composite" src="images/thumbnails/street.png" alt="Street gallery preview">
+          </span>
+        </button>
+
+        <button class="gallery-thumb" type="button" data-gallery="landscape">
+          <span class="gallery-thumb-window">
+            <img class="gallery-thumb-composite" src="images/thumbnails/landscape.png" alt="Landscape gallery preview">
+          </span>
+        </button>
+
+        <button class="gallery-thumb" type="button" data-gallery="wedding">
+          <span class="gallery-thumb-window">
+            <img class="gallery-thumb-composite" src="images/thumbnails/wedding.png" alt="Wedding gallery preview">
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══ PORTFOLIO / GALLERY POPUP ══ -->
+<div class="popup-overlay" id="popup-portfolio">
+
+  <div class="popup-window">
+
+    <!-- Arrows anchored just outside the popup frame -->
+    <img class="nav-arrow left" id="arrow-left" src="images/arrows/style-a-l.png" alt="Previous" title="Previous" style="width: 100px; margin-top: 0px; left: -100px;">
+    <img class="nav-arrow right" id="arrow-right" src="images/arrows/style-a-r.png" alt="Next" title="Next" style="width: 100px; margin-top: 0px; right: -100px;">
+
+    <div class="popup-close-btn" id="popup-close" title="Close"></div>
+    <div class="popup-title" id="gallery-popup-title">Gallery</div>
+
+    <img class="popup-frame-img" src="images/ui/desktop/popup-window.png" alt="">
+
+    <div class="popup-content-area" id="gallery-popup-content"></div>
+
+    <span class="gallery-counter" id="gallery-counter">1 / 8</span>
+
+  </div>
+</div><!-- /popup-portfolio -->
+
+
+<!-- ══ ABOUT ME POPUP ══ -->
+<div class="popup-overlay" id="popup-about">
+  <div class="popup-window">
+
+    <div class="popup-close-btn" id="about-close" title="Close"></div>
+    <div class="popup-title">About Me</div>
+
+    <img class="popup-frame-img" src="images/ui/desktop/popup-window.png" alt="">
+
+    <div class="popup-content-area about-content">
+
+      <p class="about-name">Nicky J</p>
+      <p class="about-tagline">Photographer &nbsp;·&nbsp; Storyteller &nbsp;·&nbsp; Wanderer</p>
+
+      <p class="about-bio">
+        I'm drawn to the in-between — liminal spaces where city neon bleeds
+        into overcast sky, where sunlight pushes through a canopy of trees on
+        the edge of somewhere you can't quite name.
+      </p>
+      <p class="about-bio">
+        My work lives where nature meets nightlife. The sea under grey clouds.
+        A palm silhouetted against a skyline flickering to life. Dark, dramatic
+        light that turns an ordinary street into something cinematic.
+      </p>
+      <p class="about-bio">
+        Photography, film, graphic design, websites — whatever the medium,
+        I'm chasing the same thing: that strange, beautiful quality of light
+        that makes you stop and feel it.
+      </p>
+      <p class="about-bio about-sign">Available for work &nbsp;·&nbsp; Based everywhere</p>
+
+    </div>
+
+  </div>
+</div><!-- /popup-about -->
+
+<script src="js/app.js"></script>
+<script src="js/edit.js"></script>
+
+
+<protonpass-root-f251 data-protonpass-role="root" data-protonpass-theme="os"></protonpass-root-f251></body></html>
