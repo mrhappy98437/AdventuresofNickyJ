@@ -1,0 +1,128 @@
+.menubar {
+  position: relative;
+  width: 100%;
+  min-height: 32px;
+  background: #F5B0BC;
+  border-bottom: 1px solid #c08090;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  z-index: 500;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.menubar-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a0a10;
+  margin-right: 18px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-menus {
+  display: flex;
+}
+
+.nav-menu {
+  position: relative;
+}
+
+.nav-menu-trigger {
+  padding: 0 13px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #1a0a10;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.nav-menu-trigger:hover,
+.nav-menu.open .nav-menu-trigger {
+  background: rgba(0, 0, 0, 0.13);
+}
+
+.nav-menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 32px;
+  left: 0;
+  background: #F5B0BC;
+  border: 1px solid #c08090;
+  min-width: 170px;
+  z-index: 600;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.nav-menu.open .nav-menu-dropdown {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 7px 20px;
+  font-size: 13px;
+  color: #1a0a10;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background: #b83060;
+  color: #fff;
+}
+
+.dropdown-item.inactive {
+  color: #bbb;
+  cursor: default;
+}
+
+.dropdown-item.inactive:hover {
+  background: none;
+  color: #bbb;
+}
+
+.menubar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #1a0a10;
+}
+
+.menubar-right a {
+  color: #1a0a10;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.menubar-right a:hover {
+  text-decoration: underline;
+}
+
+.menubar-time {
+  font-weight: 600;
+  font-size: 12px;
+  min-width: 38px;
+  text-align: right;
+}
+
+/* Homepage placement for the shared menu */
+#stage > #shared-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+}
+
+#stage > #shared-menu .menubar {
+  position: relative;
+  width: 100%;
+}

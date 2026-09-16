@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="shared/menu.css">
 </head>
 <body>
 <div class="viewport-rails" aria-hidden="true">
@@ -27,62 +28,64 @@
       <div class="stage" id="stage">
 
         <!-- ══ MENU BAR ══ -->
-        <div class="menubar" id="menubar">
+<div class="menubar" id="menubar">
+  <a class="menubar-brand" href="index.html">
+    <span style="font-size:17px;">🌴</span>
+    <span>The Adventures of Nicky J</span>
+  </a>
 
-          <div class="menubar-brand">
-            <span style="font-size:17px;">🌴</span>
-            <span>The Adventures of Nicky J</span>
-          </div>
+  <div class="nav-menus">
+    <div class="nav-menu" data-menu="file">
+      <div class="nav-menu-trigger">File</div>
+      <div class="nav-menu-dropdown">
+        <div class="dropdown-item" data-href="index.html" data-link-id="about">About</div>
+        <div class="dropdown-item" data-href="index.html#galleries" data-link-id="projects">Galleries</div>
+        <div class="dropdown-item" data-href="pages/privacy.html" data-link-id="privacy">Privacy Policy</div>
+        <div class="dropdown-item inactive" data-link-id="shop">Shop</div>
+      </div>
+    </div>
 
-          <div class="nav-menus">
+    <div class="nav-menu" data-menu="content">
+      <div class="nav-menu-trigger">Content</div>
+      <div class="nav-menu-dropdown">
+        <div class="dropdown-item" data-href="index.html?gallery=street" data-gallery="street" data-link-id="street">Street</div>
+        <div class="dropdown-item" data-href="index.html?gallery=wedding" data-gallery="wedding" data-link-id="weddings">Weddings</div>
+        <div class="dropdown-item" data-href="index.html?gallery=portrait" data-gallery="portrait" data-link-id="portraits">Portraits</div>
+        <div class="dropdown-item" data-href="index.html?gallery=landscape" data-gallery="landscape" data-link-id="landscape">Landscape</div>
+        <div class="dropdown-item" data-href="index.html?gallery=liminal" data-gallery="liminal" data-link-id="liminal">Liminal Spaces</div>
+        <div class="dropdown-item inactive" data-link-id="videos">Videos</div>
+        <div class="dropdown-item inactive" data-link-id="graphic-design">Graphic Design</div>
+        <div class="dropdown-item inactive" data-link-id="websites">Websites</div>
+      </div>
+    </div>
 
-            <!-- File -->
-            <div class="nav-menu" data-menu="file">
-              <div class="nav-menu-trigger">File</div>
-              <div class="nav-menu-dropdown">
-                <div class="dropdown-item" data-action="about" data-link-id="about">About</div>
-                <div class="dropdown-item" data-action="scroll-galleries" data-link-id="projects">Galleries</div>
-                <div class="dropdown-item inactive" data-link-id="shop">Shop</div>
-              </div>
-            </div>
+    <div class="nav-menu" data-menu="applications">
+      <div class="nav-menu-trigger">Applications</div>
+      <div class="nav-menu-dropdown">
+        <div class="dropdown-item" data-href="pages/mailbase.html" data-link-id="mailbase">MailBase</div>
+      </div>
+    </div>
 
-            <!-- Content -->
-            <div class="nav-menu" data-menu="content">
-              <div class="nav-menu-trigger">Content</div>
-              <div class="nav-menu-dropdown">
-                <div class="dropdown-item" data-action="open-gallery" data-gallery="street" data-link-id="street">Street</div>
-                <div class="dropdown-item" data-action="open-gallery" data-gallery="wedding" data-link-id="weddings">Weddings</div>
-                <div class="dropdown-item" data-action="open-gallery" data-gallery="portrait" data-link-id="portraits">Portraits</div>
-                <div class="dropdown-item" data-action="open-gallery" data-gallery="landscape" data-link-id="landscape">Landscape</div>
-                <div class="dropdown-item" data-action="open-gallery" data-gallery="liminal" data-link-id="liminal">Liminal Spaces</div>
-                <div class="dropdown-item inactive" data-link-id="videos">Videos</div>
-                <div class="dropdown-item inactive" data-link-id="graphic-design">Graphic Design</div>
-                <div class="dropdown-item inactive" data-link-id="websites">Websites</div>
-              </div>
-            </div>
+    <div class="nav-menu" data-menu="contact">
+      <div class="nav-menu-trigger">Contact</div>
+      <div class="nav-menu-dropdown">
+        <div class="dropdown-item" data-action="instagram" data-link-id="instagram">Instagram</div>
+        <div class="dropdown-item" data-action="email" data-link-id="email">Email</div>
+        <div class="dropdown-item inactive" data-link-id="blog">Blog</div>
+      </div>
+    </div>
+  </div>
 
-            <!-- Contact -->
-            <div class="nav-menu" data-menu="contact">
-              <div class="nav-menu-trigger">Contact</div>
-              <div class="nav-menu-dropdown">
-                <div class="dropdown-item" data-action="instagram" data-link-id="instagram">Instagram</div>
-                <div class="dropdown-item" data-action="email" data-link-id="email">Email</div>
-                <div class="dropdown-item inactive" data-link-id="blog">Blog</div>
-              </div>
-            </div>
+  <div class="menubar-right">
+    <a href="mailto:hello@adventuresofnickyj.com">hello@adventuresofnickyj.com</a>
+    <span style="font-size:14px;" title="Instagram">📷</span>
+    <span style="font-size:14px;" title="Email">✉</span>
+    <span class="menubar-time" id="clock">17:00</span>
+  </div>
+</div>
 
-          </div><!-- /nav-menus -->
 
-          <div class="menubar-right">
-            <a href="mailto:hello@adventuresofnickyj.com">hello@adventuresofnickyj.com</a>
-            <span style="font-size:14px; cursor:pointer;" title="Instagram">📷</span>
-            <span style="font-size:14px; cursor:pointer;" title="Email">✉</span>
-            <span class="menubar-time" id="clock">14:44</span>
-          </div>
-
-        </div><!-- /menubar -->
-
-        <!-- ══ MAILBASE DESKTOP WINDOW ══ -->
+      <!-- ══ MAILBASE DESKTOP WINDOW ══ -->
         <div class="mailbase-desktop-window" aria-label="MailBase application preview">
           <img
             class="mailbase-desktop-window-art"
@@ -91,7 +94,7 @@
           >
           <a
             class="mailbase-open-button"
-            href="http://theadventuresofnickyj.com/mailbase-mini-site/index.html"
+            href="pages/mailbase.html"
             target="_blank"
             rel="noopener"
             aria-label="Open MailBase application"
@@ -116,7 +119,7 @@
               <img src="images/ui/desktop/dock/portfolio.png" alt="Portfolio" style="width: 68px; height: 68px;">
               <span class="icon-label">Portfolio</span>
             </div>
-            <div class="dock-icon" data-action="services" data-href="http://theadventuresofnickyj.com/mailbase-mini-site/index.html" style="--icon-y: -38px;">
+            <div class="dock-icon" data-action="services" data-href="pages/mailbase.html" style="--icon-y: -38px;">
               <img src="images/ui/desktop/dock/services.png" alt="Applications" style="width: 68px; height: 68px;">
               <span class="icon-label">Applications</span>
             </div>

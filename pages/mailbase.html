@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1600">
+  <title>MailBase — The Adventures of Nicky J</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/menu.css">
+  <link rel="stylesheet" href="../shared/mailbase-pages.css">
+</head>
+<body>
+  <div class="viewport-rails" aria-hidden="true">
+    <span class="viewport-rail viewport-rail-left"></span>
+    <span class="viewport-rail viewport-rail-right"></span>
+  </div>
+
+  <div class="site-shell">
+    <main class="mailbase-stage">
+<div class="menubar" id="menubar">
+  <a class="menubar-brand" href="../index.html">
+    <span style="font-size:17px;">🌴</span>
+    <span>The Adventures of Nicky J</span>
+  </a>
+
+  <div class="nav-menus">
+    <div class="nav-menu" data-menu="file">
+      <div class="nav-menu-trigger">File</div>
+      <div class="nav-menu-dropdown">
+        <div class="dropdown-item" data-href="../index.html" data-link-id="about">About</div>
+        <div class="dropdown-item" data-href="../index.html#galleries" data-link-id="projects">Galleries</div>
+        <div class="dropdown-item" data-href="privacy.html" data-link-id="privacy">Privacy Policy</div>
+        <div class="dropdown-item inactive" data-link-id="shop">Shop</div>
+      </div>
+    </div>
+
+    <div class="nav-menu" data-menu="content">
+      <div class="nav-menu-trigger">Content</div>
+      <div class="nav-menu-dropdown">
+        <div class="dropdown-item" data-href="../index.html?gallery=street" data-gallery="street" data-link-id="street">Street</div>
+        <div class="dropdown-item" data-href="../index.html?gallery=wedding" data-gallery="wedding" data-link-id="weddings">Weddings</div>
+        <div class="dropdown-item" data-href="../index.html?gallery=portrait" data-gallery="portrait" data-link-id="portraits">Portraits</div>
+        <div class="dropdown-item" data-href="../index.html?gallery=landscape" data-gallery="landscape" data-link-id="landscape">Landscape</div>
+        <div class="dropdown-item" data-href="../index.html?gallery=liminal" data-gallery="liminal" data-link-id="liminal">Liminal Spaces</div>
+        <div class="dropdown-item inactive" data-link-id="videos">Videos</div>
+        <div class="dropdown-item inactive" data-link-id="graphic-design">Graphic Design</div>
+        <div class="dropdown-item inactive" data-link-id="websites">Websites</div>
+      </div>
+    </div>
+
+    <div class="nav-menu" data-menu="applications">
+      <div class="nav-menu-trigger">Applications</div>
+      <div class="nav-menu-dropdown">
+        <div class="dropdown-item" data-href="mailbase.html" data-link-id="mailbase">MailBase</div>
+      </div>
+    </div>
+
+    <div class="nav-menu" data-menu="contact">
+      <div class="nav-menu-trigger">Contact</div>
+      <div class="nav-menu-dropdown">
+        <div class="dropdown-item" data-action="instagram" data-link-id="instagram">Instagram</div>
+        <div class="dropdown-item" data-action="email" data-link-id="email">Email</div>
+        <div class="dropdown-item inactive" data-link-id="blog">Blog</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menubar-right">
+    <a href="mailto:hello@adventuresofnickyj.com">hello@adventuresofnickyj.com</a>
+    <span style="font-size:14px;" title="Instagram">📷</span>
+    <span style="font-size:14px;" title="Email">✉</span>
+    <span class="menubar-time" id="clock">17:00</span>
+  </div>
+</div>
+
+
+      <section class="mailbase-hero" aria-labelledby="mailbase-title">
+        <div class="mail-window" aria-hidden="true">
+          <div class="window-titlebar"><span class="traffic red"></span><span class="traffic yellow"></span><span class="traffic green"></span><strong>MailBase</strong></div>
+          <div class="window-body"><aside><span>✉ Inbox</span><span>☆ Starred</span><span>➤ Sent</span><span>▱ Drafts</span><span>▣ All Mail</span></aside><div class="message-list"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </div>
+        <div class="hero-note">Your Mail<br>Your Way<br><strong>Always Private</strong></div>
+      </section>
+
+
+      <section class="mockup-section" aria-label="MailBase application overview">
+        <figure class="mockup-panel">
+          <img
+            class="mailbase-mockup-image"
+            src="../images/ui/desktop/mailbase-mock-up.svg"
+            alt="MailBase personal email application overview"
+          >
+        </figure>
+      </section>
+
+      <section class="content-card home-card">
+        <p class="eyebrow">APPLICATIONS / MAILBASE</p>
+        <h1 id="mailbase-title">MailBase</h1>
+        <p class="lead">A private, locally running desktop email application.</p>
+        <p>MailBase brings your email accounts together in a clean, database-style desktop app for reading, organizing, searching, composing, sending, replying to, forwarding, and managing email.</p>
+
+        <div class="feature-grid">
+          <div><div class="feature-icon">▣</div><h2>Private by design</h2><p>MailBase runs locally on your computer. Synchronized application data is stored locally rather than on this website.</p></div>
+          <div><div class="feature-icon">✉</div><h2>Works with Gmail</h2><p>Gmail accounts connect through secure Google OAuth and the Gmail API after the account owner authorizes access.</p></div>
+          <div><div class="feature-icon">⚙</div><h2>Simple and focused</h2><p>A clean interface built around the email tools that matter, without turning this website into the email application itself.</p></div>
+        </div>
+
+        <div class="button-row"><a class="primary-button" href="#mailbase-title">MailBase</a><a class="secondary-button" href="privacy.html">View Privacy Policy</a></div>
+      </section>
+    </main>
+  </div>
+  <script src="../shared/menu.js"></script>
+</body>
+</html>

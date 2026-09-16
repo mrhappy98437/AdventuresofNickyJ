@@ -528,3 +528,12 @@ function closeAbout() {
 }
 
 document.getElementById('about-close').addEventListener('click', closeAbout);
+
+// Open a requested gallery when arriving from another page.
+(() => {
+  const requestedGallery = new URLSearchParams(window.location.search).get('gallery');
+
+  if (requestedGallery && galleryConfig[requestedGallery]) {
+    window.setTimeout(() => openGallery(requestedGallery), 0);
+  }
+})();
