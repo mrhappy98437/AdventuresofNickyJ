@@ -346,6 +346,10 @@
   document.querySelectorAll('.m-qi-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const action = btn.dataset.action;
+      if (btn.dataset.href) {
+        window.open(btn.dataset.href, '_blank');
+        return;
+      }
       if (action === 'about')      openAbout();
       if (action === 'galleries')  navigateTo('galleries');
       if (action === 'instagram') window.open('https://instagram.com', '_blank');
