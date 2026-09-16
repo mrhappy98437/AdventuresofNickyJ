@@ -201,6 +201,57 @@ body {
   text-align: right;
 }
 
+/* ── MAILBASE DESKTOP WINDOW ── */
+.mailbase-desktop-window {
+  position: absolute;
+  left: 890px;
+  top: 150px;
+  width: 520px;
+  z-index: 8;
+  transform: rotate(-1deg);
+  transform-origin: left bottom;
+  transition: transform 0.18s ease, filter 0.18s ease;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.34));
+  pointer-events: none;
+}
+
+.mailbase-desktop-window:hover {
+  transform: translateY(-8px) rotate(0deg) scale(1.02);
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.42));
+}
+
+.mailbase-desktop-window-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.mailbase-open-button {
+  position: absolute;
+  right: 7.5%;
+  bottom: 7.5%;
+  width: 31%;
+  display: block;
+  pointer-events: auto;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.mailbase-open-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mailbase-open-button:hover {
+  transform: translateY(-4px) scale(1.04);
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.25));
+}
+
+.mailbase-open-button:active {
+  transform: translateY(1px) scale(0.96);
+}
+
 
 /* ══════════════════════════════════════════════
    DOCK
