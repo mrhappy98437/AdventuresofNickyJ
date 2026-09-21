@@ -39,3 +39,29 @@
     border-radius: 6px;
   }
 }
+
+/* Shared desktop page frame: the pattern stays outside the centered column,
+   while the colored rails sit directly beside that column. */
+:root {
+  --site-column-width: min(1600px, 100vw);
+  --viewport-rail-width: 14px;
+}
+
+html,
+body {
+  background-color: #f7f7f4;
+  background-image: radial-gradient(#c9c9c9 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.viewport-rail {
+  width: var(--viewport-rail-width);
+}
+
+.viewport-rail-left {
+  left: max(0px, calc(50% - (var(--site-column-width) / 2) - var(--viewport-rail-width)));
+}
+
+.viewport-rail-right {
+  right: max(0px, calc(50% - (var(--site-column-width) / 2) - var(--viewport-rail-width)));
+}
