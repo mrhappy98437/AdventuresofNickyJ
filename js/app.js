@@ -6,6 +6,10 @@ const STAGE_W = 1600;
 const STAGE_H = 1000;
 const GALLERY_MAX = 30;
 const DEFAULT_GALLERY_LAYOUT = { width: 535, height: 302, gapX: 140, gapY: 76 };
+const CANONICAL_MENU_URLS = {
+  mailbase: 'pages/mailbase.html',
+  privacy: 'pages/privacy.html',
+};
 const stage = document.getElementById('stage');
 const stageShell = document.querySelector('.stage-shell');
 const gallerySection = document.getElementById('galleries');
@@ -165,7 +169,7 @@ setInterval(updateClock, 15000);
     }
     if (saved.menuUrls) {
       document.querySelectorAll('.dropdown-item[data-link-id]').forEach(item => {
-        const url = saved.menuUrls[item.dataset.linkId];
+        const url = CANONICAL_MENU_URLS[item.dataset.linkId] || saved.menuUrls[item.dataset.linkId];
         if (url) {
           item.dataset.href = url;
           item.classList.remove('inactive');
